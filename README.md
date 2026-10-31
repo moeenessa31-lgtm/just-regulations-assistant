@@ -13,7 +13,7 @@ Current status: **Phase 1 (Problem and Data)**.
 
 | Member | Role |
 |---|---|
-| Hamza Moeen Rasheed Eissa | Product lead + Evaluation lead |
+| Hamza Moeen Rasheed Issa | Product lead + Evaluation lead |
 | Mohammad Ziad Abdelmajeed Alrousan | Data lead |
 | Asem Zakaria Alfreeh | Engineering lead |
 
