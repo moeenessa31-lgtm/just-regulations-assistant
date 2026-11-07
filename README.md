@@ -76,6 +76,6 @@ and the model in `outputs/cpt/final`. On Kaggle, run `notebooks/run_cpt_kaggle.i
 
 The evaluation plan is in `docs/evaluation_plan.md`.
 
-**Checkpoints** are not in Git. Location: _TODO — Hugging Face Hub repo or Google Drive link_.
+**Checkpoints** are not in Git. Location:https://drive.google.com/file/d/1TQVj00VlFdya7MCUdYhLk3_6ezQcYuxd/view?usp=drive_link
 To push to the Hub, set `cpt.hub_repo` in `config.yaml` and the `HF_TOKEN`
 environment variable (see `.env.example`).
