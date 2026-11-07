@@ -1,0 +1,35 @@
+{
+  "train": {
+    "documents": 18,
+    "characters": 134510,
+    "doc_names": [
+      "academic_calendar_2026_2027",
+      "change_of_major_scanned",
+      "course_codes_meaning_scanned",
+      "degree_regulation_1987_amended",
+      "exam_regulations",
+      "fees_credit_hours",
+      "field_training_cit",
+      "honor_list_scanned",
+      "level_exams_scanned",
+      "loans_priority",
+      "medical_excuses",
+      "misc_academic_decisions_garbled",
+      "parallel_program_rules_scanned",
+      "schedule_offering_rules",
+      "student_aid_fund",
+      "student_discipline_2024",
+      "student_number_meaning_scanned",
+      "weather_suspension_policy"
+    ]
+  },
+  "heldout": {
+    "documents": 2,
+    "characters": 14122,
+    "doc_names": [
+      "disability_accommodations",
+      "student_conduct_code"
+    ]
+  },
+  "heldout_share_of_characters": 0.095
+}

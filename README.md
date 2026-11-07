@@ -7,7 +7,7 @@ document and article. If a question needs a personal record or an administrative
 decision, the assistant says "I don't know".
 
 Course: *Building LLM Systems: From Models to Production* — Team Project.
-Current status: **Phase 1 (Problem and Data)**.
+Current status: **Phase 2 (Train a Small Model and Evaluate It)**.
 
 ## Team (Phase 1 roles)
 
@@ -51,3 +51,31 @@ Later phases: prerequisite table + an agent tool (RAG + agent), compared against
 `eval/seed_test_set.csv` has columns `id,question,expected_answer,source,difficulty`.
 15 easy, 10 medium, 5 hard; questions 28-30 are out-of-scope and must be refused.
 The file is UTF-8 with BOM so Excel shows the Arabic correctly.
+
+## Phase 2: train a small model
+
+Setup (Python 3.10+; a GPU is needed for the full runs, e.g. a free Kaggle T4):
+
+```
+pip install -r requirements.txt
+```
+
+All settings and the random seed are in `config.yaml`.
+
+**Stage 1 — continued pretraining**
+
+```
+python -m src.prepare_cpt_data   # clean data/text, split 90/10 by document -> data/cpt/
+python train_cpt.py --smoke      # 5% of the data, 20 steps: checks the pipeline
+python train_cpt.py              # full run
+```
+
+Writes `results/cpt_metrics.json` (corpus tokens, held-out perplexity before/after),
+`results/cpt_loss_curve.png`, `results/cpt_completions.md` (same 5 prompts before/after)
+and the model in `outputs/cpt/final`. On Kaggle, run `notebooks/run_cpt_kaggle.ipynb`.
+
+The evaluation plan is in `docs/evaluation_plan.md`.
+
+**Checkpoints** are not in Git. Location: _TODO — Hugging Face Hub repo or Google Drive link_.
+To push to the Hub, set `cpt.hub_repo` in `config.yaml` and the `HF_TOKEN`
+environment variable (see `.env.example`).

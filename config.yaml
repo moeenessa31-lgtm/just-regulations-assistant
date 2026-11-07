@@ -1,0 +1,47 @@
+# All settings for Phase 2. The scripts read everything from here, so a run can be
+# repeated exactly by keeping this file and the seed unchanged.
+
+seed: 42
+
+# Base model: gpt2 (124M) or HuggingFaceTB/SmolLM2-135M
+base_model: gpt2
+
+cpt_data:
+  text_dir: data/text
+  out_dir: data/cpt
+  min_chars: 200
+  # Split by document, about 10% of the characters held out.
+  # Chosen from documents that no test question depends on, so the documents
+  # behind the test set (degree regulation, medical excuses, ...) stay in training.
+  heldout_docs:
+    - student_conduct_code
+    - disability_accommodations
+  exclude_docs: []   # e.g. misc_academic_decisions_garbled if its OCR noise hurts
+
+cpt:
+  output_dir: outputs/cpt          # checkpoints (ignored by Git)
+  block_size: 512                  # tokens per training sequence
+  num_train_epochs: 3              # passes over the data (1-3)
+  learning_rate: 5.0e-5
+  batch_size: 8
+  gradient_accumulation_steps: 1
+  warmup_ratio: 0.05
+  weight_decay: 0.01
+  val_eval_every_steps: 10         # how often to measure validation loss for the curve
+  early_stopping_patience: 1       # stop after 1 pass with no drop in validation loss
+  hub_repo: null                   # e.g. your-user/just-gpt2-cpt (private); needs HF_TOKEN
+  # Smoke test (tip in the brief): --smoke uses this share of the data and few steps
+  smoke_fraction: 0.05
+  smoke_max_steps: 20
+
+generation:                        # same settings for every model and every phase
+  max_new_tokens: 80
+  do_sample: false                 # greedy decoding = temperature 0
+
+# The same 5 prompts are completed before and after continued pretraining.
+sample_prompts:
+  - "المادة 7: يتوجب على الطالب حضور"
+  - "إذا تغيب الطالب عن الامتحان النهائي"
+  - "يجوز للطالب الانسحاب من المساق"
+  - "يوضع الطالب تحت المراقبة الأكاديمية إذا"
+  - "يقدم الطالب العذر الطبي إلى"
