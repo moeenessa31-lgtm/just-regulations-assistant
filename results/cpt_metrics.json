@@ -1,0 +1,55 @@
+{
+  "base_model": "gpt2",
+  "settings": {
+    "block_size": 512,
+    "num_train_epochs": 3,
+    "learning_rate": 5e-05,
+    "batch_size": 8,
+    "early_stopping_patience": 1
+  },
+  "corpus_tokens_train": 131374,
+  "corpus_tokens_heldout": 13720,
+  "train_blocks": 256,
+  "heldout_blocks": 26,
+  "tokens_per_character": 0.976,
+  "heldout_perplexity_before": 9.716,
+  "heldout_perplexity_after": 7.828,
+  "epochs_completed": 3.0,
+  "best_checkpoint": "/kaggle/working/just-regulations-assistant/outputs/cpt/checkpoint-48",
+  "eval_loss_per_pass": [
+    {
+      "epoch": 1.0,
+      "eval_loss": 2.140202522277832
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 2.0768704414367676
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 2.053638219833374
+    }
+  ],
+  "val_curve": [
+    {
+      "step": 10,
+      "epoch": 0.625,
+      "loss": 2.2251
+    },
+    {
+      "step": 20,
+      "epoch": 1.25,
+      "loss": 2.1494
+    },
+    {
+      "step": 30,
+      "epoch": 1.875,
+      "loss": 2.0863
+    },
+    {
+      "step": 40,
+      "epoch": 2.5,
+      "loss": 2.0668
+    }
+  ]
+}
